@@ -10,7 +10,7 @@ async function getProducts(nameShop){
     {
      query_selectProduct = {
         text: `select product.id, product.name, product.quantity,product.price, product.shop
-         from product inner join shop on product.shop = shop
+         from product inner join shop on product.shop = shop.shop_id
         where shop.name = $1;`,
         values: [nameShop]
     }

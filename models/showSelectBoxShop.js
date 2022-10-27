@@ -1,7 +1,7 @@
 var pg_conn = require('./pg.config');
 async function viewShop() {
   const shop_query = {
-    text: `SELECT shop.name from shop inner join account on account.shop = shop 
+    text: `SELECT shop.name from shop inner join account on account.shop = shop
           where account.role = 'shop';`
   }
   var query_data = await pg_conn.query(shop_query)
