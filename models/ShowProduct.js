@@ -7,6 +7,7 @@ async function showProduct(shop_id) {
     var query_data = await pg_conn.query(shop_query);
 
     let productString = '';
+    
     query_data.rows.forEach(product => {
         productString += `
           <tr>
@@ -14,7 +15,7 @@ async function showProduct(shop_id) {
               <td>${product.name}</td>
               <td>${product.quantity}</td>
               <td>${product.price}</td>    
-              <td>${product.shop}</td>  
+              <td>${product.shop}</td> 
               <form method="POST" action="/button">
               <input type="hidden" value="${product.id}" name="id"></td>
               <input type="hidden"value="${product.shop}" name="shop"></td>
@@ -32,7 +33,7 @@ async function showProduct(shop_id) {
         <td><input type="text" name="name"> </td>       
         <td> <input type="text" name="price"></td>       
         <td> <input type="text" name="quantity"></td> 
-        <td> <input type="text" name="shop"></td>
+        <td> <input type="text" name="shop"></td> 
        <td><input type="submit" value="Add" name="button"></td>
         <form>
     `
