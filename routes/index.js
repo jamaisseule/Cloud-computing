@@ -42,6 +42,7 @@ router.post('/users', async function (req, res, next) {
   }
   console.log(sessionData.shop);
   if (authenticated == true && role == 'shop') {
+    
     let productString = await tableProduct(shop_id);
     res.render('users', { products: productString,
       });
@@ -108,8 +109,8 @@ router.post('/addProduct', async function (req, res, next) {
   let name = req.body.name;
   let quantity = req.body.quantity;
   let price = req.body.price;
-  var shop_id = req.session.user.shop_id;
-  console.log(req.session.user.shop_id);
+  var shop_id = req.body.shop;
+  console.log(req.session.shop_id);
   addItem(id, name, quantity, price, shop_id);
   let productString = await tableProduct(shop_id);
   res.render('users', { products: productString});
